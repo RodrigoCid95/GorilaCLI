@@ -57,7 +57,7 @@ exports.CreateProject = function (args) {
         }
         console.log(chalk.italic.grey('Instalando dependencias ...'));
         var exec = require('child_process').exec;
-        exec('cd ./' + name + ' && npm i && gorila build', function (err) {
+        exec('cd ./' + name + ' && npm i && tsc', function (err) {
             console.log(chalk.green('Dependencias instaladas!'));
             prompt({
                 name: 'question',

@@ -1,21 +1,22 @@
 {
   "name": "@gorila/cli",
-  "version": "0.0.1",
+  "version": "1.9.26",
   "description": "",
-  "main": "Script.js",
+  "main": "bin/Script.js",
   "repository": {
-    "type": "git"
+    "type": "git",
+    "url": "git+https://github.com/RodrigoCid95/GorilaFramework.git"
   },
   "scripts": {
-    "start": "node ./Script.js"
+    "start": "node ./bin/Script.js"
   },
   "bin": {
-    "gorila": "Script.js"
+    "gorila": "bin/Script.js"
   },
   "author": "Rodrigo Eduardo Cid Méndez <rodrigocid95@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/RodrigoCid95/GorilaCLI/issues"
+    "url": "https://github.com/RodrigoCid95/GorilaFramework/issues"
   },
   "keywords": [
     "gorila",
