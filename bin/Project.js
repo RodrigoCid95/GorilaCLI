@@ -8,7 +8,7 @@ var templates = require("./Proyect/Templates");
 var chalk = require('chalk');
 var inquirer = require('inquirer');
 exports.CreateProject = function (args) {
-    args[1] === undefined ? LaunchError_1.LauncError("No se defini\u00F3 un nombre para el nuevo controlador.") : null;
+    args[1] === undefined ? LaunchError_1.LauncError("No se defini\u00F3 un nombre para el nuevo proyecto.") : null;
     var name = args[1];
     name = name.charAt(0).toLocaleLowerCase() + name.slice(1);
     var prompt = inquirer.createPromptModule();
