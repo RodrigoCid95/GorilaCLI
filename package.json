@@ -1,6 +1,6 @@
 {
   "name": "@gorila/cli",
-  "version": "1.9.26",
+  "version": "0.0.1",
   "description": "",
   "main": "bin/Script.js",
   "repository": {
