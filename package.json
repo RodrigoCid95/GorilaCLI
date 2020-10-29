@@ -1,0 +1,42 @@
+{
+  "name": "@gorila/cli",
+  "version": "0.0.1",
+  "description": "",
+  "main": "Script.js",
+  "repository": {
+    "type": "git"
+  },
+  "scripts": {
+    "start": "node ./Script.js"
+  },
+  "bin": {
+    "gorila": "Script.js"
+  },
+  "author": "Rodrigo Eduardo Cid Méndez <rodrigocid95@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RodrigoCid95/GorilaCLI/issues"
+  },
+  "keywords": [
+    "gorila",
+    "cli",
+    "backend"
+  ],
+  "engines": {
+    "node": ">= 10.9.0",
+    "npm": ">= 6.2.0"
+  },
+  "homepage": "https://github.com/RodrigoCid95/GorilaCLI#readme",
+  "dependencies": {
+    "@node-minify/clean-css": "^5.3.0",
+    "@node-minify/core": "^6.0.0",
+    "@node-minify/html-minifier": "^5.3.0",
+    "@node-minify/jsonminify": "^5.3.0",
+    "@node-minify/terser": "^5.3.0",
+    "chalk": "^4.0.0",
+    "figlet": "^1.4.0",
+    "inquirer": "^7.1.0",
+    "tslib": "^2.0.1",
+    "typescript": "^3.9.7"
+  }
+}
