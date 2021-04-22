@@ -7,7 +7,8 @@
     "watch": "gorila watch"
   },
   "devDependencies": {
-    "@types/gorila-core": "git+https://github.com/RodrigoCid95/-types-GorilaCore.git"
+    "@types/gorila-core": "git+https://github.com/RodrigoCid95/-types-GorilaCore.git",
+    "@types/node": "^14.14.41"
   },
   "dependencies": {
     "gorila-core": "git+https://github.com/RodrigoCid95/GorilaCore.git",
