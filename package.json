@@ -1,8 +1,8 @@
 {
   "name": "@gorila/cli",
-  "version": "0.0.1",
+  "version": "1.9.5",
   "description": "",
-  "main": "bin/Script.js",
+  "main": "bin/script.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/RodrigoCid95/GorilaFramework.git"
@@ -11,7 +11,7 @@
     "start": "node ./bin/Script.js"
   },
   "bin": {
-    "gorila": "bin/Script.js"
+    "gorila": "bin/script.js"
   },
   "author": "Rodrigo Eduardo Cid Méndez <rodrigocid95@gmail.com>",
   "license": "MIT",
@@ -27,17 +27,23 @@
     "node": ">= 10.9.0",
     "npm": ">= 6.2.0"
   },
-  "homepage": "https://github.com/RodrigoCid95/GorilaCLI#readme",
+  "homepage": "https://github.com/RodrigoCid95/GorilaFramework#readme",
+  "devDependencies": {
+    "@types/figlet": "^1.5.1",
+    "@types/html-minifier": "^4.0.0",
+    "@types/inquirer": "^7.3.1",
+    "@types/jsonminify": "^0.4.1",
+    "@types/node": "^12.20.10"
+  },
   "dependencies": {
-    "@node-minify/clean-css": "^6.1.0",
-    "@node-minify/core": "^6.1.0",
-    "@node-minify/html-minifier": "^6.1.0",
-    "@node-minify/jsonminify": "^6.1.0",
-    "@node-minify/terser": "^6.1.0",
     "chalk": "^4.1.0",
+    "clean-css": "^5.1.2",
     "figlet": "^1.5.0",
+    "html-minifier": "^4.0.0",
     "inquirer": "^7.3.3",
-    "tslib": "^2.0.3",
-    "typescript": "^4.0.5"
+    "jsonminify": "^0.4.1",
+    "terser": "^5.6.1",
+    "tslib": "^2.2.0",
+    "typescript": "^4.2.4"
   }
 }

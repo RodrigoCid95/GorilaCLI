@@ -1,0 +1,19 @@
+{
+  "name": "gorila-sockets",
+  "version": "0.0.1",
+  "description": "",
+  "main": "./dist/main.js",
+  "scripts": {
+    "start": "gorila build && node .",
+    "watch": "gorila watch"
+  },
+  "devDependencies": {
+    "@types/gorila-core": "git+https://github.com/RodrigoCid95/-types-GorilaCore.git",
+    "@types/gorila-sockets": "git+https://github.com/RodrigoCid95/-types-gorila-sockets.git"
+  },
+  "dependencies": {
+    "gorila-core": "git+https://github.com/RodrigoCid95/GorilaCore.git",
+    "gorila-sockets": "git+https://github.com/RodrigoCid95/GorilaSockets.git",
+    "tslib": "^2.2.0"
+  }
+}

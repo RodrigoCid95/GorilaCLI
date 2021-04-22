@@ -1,12 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PrintHelp = void 0;
-var chalk = require('chalk');
-var figlet = require('figlet');
-var version = require('./../package.json').version;
-exports.PrintHelp = function (msg, error) {
-    if (error === void 0) { error = false; }
-    figlet('Gorila CLI', function (err, data) {
+exports.printHelp = void 0;
+const chalk = require('chalk');
+const figlet = require('figlet');
+const version = require('./../package.json').version;
+const printHelp = (msg, error = false) => {
+    figlet('Gorila CLI', (err, data) => {
         if (!err) {
             console.log(chalk.blue.bold(data));
             console.log('  ' + chalk.italic.gray('Version: ' + version));
@@ -30,3 +29,4 @@ exports.PrintHelp = function (msg, error) {
         }
     });
 };
+exports.printHelp = printHelp;

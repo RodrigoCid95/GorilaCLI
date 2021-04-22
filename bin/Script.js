@@ -1,33 +1,39 @@
 #!/usr/bin/env node
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var PrintHelp_1 = require("./PrintHelp");
-var Compiler_1 = require("./Compiler");
-var Project_1 = require("./Project");
-var Verify_1 = require("./Verify");
-(function (args) {
+const tslib_1 = require("tslib");
+const printHelp_1 = require("./printHelp");
+const compiler_1 = require("./compiler");
+const project_1 = require("./project");
+const searchFiles_1 = require("./compiler/searchFiles");
+const minify_1 = require("./compiler/minify");
+((args) => tslib_1.__awaiter(void 0, void 0, void 0, function* () {
     try {
         switch (args[0]) {
+            case 'minify':
+                const paths = searchFiles_1.searchFiles(args[1], { include: ['html', 'css', 'js', 'json'] });
+                minify_1.minifyResources(paths, { dest: args[2] || '.', srcMap: (args[3] === '--srcMap' || args[3] === '-sm') });
+                break;
             case 'watch':
-                Verify_1.Verify() ? Compiler_1.WatchProyect() : process.exit(1);
+                compiler_1.watchProyect();
                 break;
             case 'build':
-                Verify_1.Verify() ? Compiler_1.Build(args) : process.exit(1);
+                compiler_1.build(args);
                 break;
             case 'new':
-                Project_1.CreateProject(args);
+                yield project_1.CreateProject(args);
                 break;
             default:
                 if (args[0] === undefined) {
-                    PrintHelp_1.PrintHelp();
+                    printHelp_1.printHelp();
                 }
                 else {
-                    PrintHelp_1.PrintHelp("No se reconoce el comando " + args[0]);
+                    printHelp_1.printHelp(`No se reconoce el comando ${args[0]}`);
                 }
                 break;
         }
     }
     catch (e) {
-        PrintHelp_1.PrintHelp(e, true);
+        printHelp_1.printHelp(e, true);
     }
-})(process.argv.splice(2));
+}))(process.argv.splice(2));

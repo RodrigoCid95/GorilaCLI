@@ -1,0 +1,19 @@
+{
+  "name": "gerila-http",
+  "version": "0.0.1",
+  "main": "./dist/main.js",
+  "scripts": {
+    "start": "gorila build && node .",
+    "watch": "gorila watch"
+  },
+  "devDependencies": {
+    "@types/gorila-http": "git+https://github.com/RodrigoCid95/-types-Gorila-HTTP.git",
+    "@types/gorila-core": "git+https://github.com/RodrigoCid95/-types-GorilaCore.git"
+  },
+  "dependencies": {
+    "gorila-http": "git+https://github.com/RodrigoCid95/GorilaHTTP.git",
+    "gorila-core": "git+https://github.com/RodrigoCid95/GorilaCore.git",
+    "pug": "^3.0.2",
+    "tslib": "^2.2.0"
+  }
+}

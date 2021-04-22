@@ -1,89 +1,90 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateProject = void 0;
-var fs = require("fs");
-var LaunchError_1 = require("./LaunchError");
-var Directorys_1 = require("./Proyect/Directorys");
-var templates = require("./Proyect/Templates");
-var chalk = require('chalk');
-var inquirer = require('inquirer');
-exports.CreateProject = function (args) {
-    args[1] === undefined ? LaunchError_1.LauncError("No se defini\u00F3 un nombre para el nuevo proyecto.") : null;
-    var name = args[1];
+const tslib_1 = require("tslib");
+const fs = require("fs");
+const Path = require("path");
+const searchFiles_1 = require("./compiler/searchFiles");
+const launchError_1 = require("./launchError");
+const chalk = require("chalk");
+const inquirer = require("inquirer");
+const CreateProject = (args) => tslib_1.__awaiter(void 0, void 0, void 0, function* () {
+    args[1] === undefined ? launchError_1.LauncError(`No se definió un nombre para el nuevo proyecto.`) : null;
+    let name = args[1];
     name = name.charAt(0).toLocaleLowerCase() + name.slice(1);
-    var prompt = inquirer.createPromptModule();
-    prompt({
+    const prompt = inquirer.createPromptModule();
+    let { question1 } = yield prompt({
         name: 'question1',
         message: '¿Que plantilla quieres usar?',
         type: 'list',
         choices: [
             {
-                name: 'Ninguna',
-                value: 0
+                name: 'Core',
+                value: 'core'
             },
             {
                 name: 'HTTP',
-                value: 1
+                value: 'http'
             },
             {
                 name: 'Sockets',
-                value: 2
+                value: 'sockets'
             },
             {
                 name: 'HTTP y Sockets',
-                value: 3
+                value: 'http-sockets'
             }
         ],
         default: 'Ninguno'
-    }).then(function (res) {
-        var dirProyect = './' + name;
-        fs.existsSync(dirProyect) ? LaunchError_1.LauncError("El directorio \"./" + name + "\" ya existe.") : null;
-        fs.mkdirSync(dirProyect);
-        console.log(chalk.green("Directorio " + dirProyect + " creado."));
-        var directory = Directorys_1.Directorys[res.question1];
-        for (var _i = 0, directory_1 = directory; _i < directory_1.length; _i++) {
-            var item = directory_1[_i];
-            if (typeof item === 'string') {
-                var dirFile = dirProyect + "/" + item;
-                fs.mkdirSync(dirFile, { recursive: true });
-                console.log(chalk.green("Directorio " + dirFile + " creado."));
-            }
-            else {
-                var dir = dirProyect + "/" + item.path;
-                var content = templates[item.variable];
-                fs.writeFileSync(dir, content, { encoding: 'utf-8' });
-                console.log(chalk.green("Fichero " + dir + " creado."));
-            }
-        }
-        console.log(chalk.italic.grey('Instalando dependencias ...'));
-        var exec = require('child_process').exec;
-        exec('cd ./' + name + ' && npm i && tsc', function (err) {
-            console.log(chalk.green('Dependencias instaladas!'));
-            prompt({
-                name: 'question',
-                message: '¿Con que programa quieres abrir el proyecto?',
-                type: 'list',
-                choices: [
-                    'Ninguno',
-                    'Visual Studio Code',
-                    'Explorador De Archivos'
-                ],
-                default: 'Ninguno'
-            }).then(function (res) {
-                switch (res.question) {
-                    case 'Ninguno':
-                        process.exit(1);
-                        break;
-                    case 'Visual Studio Code':
-                        exec('cd ./' + name + ' && code .');
-                        break;
-                    case 'Explorador De Archivos':
-                        exec('cd ./' + name + ' && start .');
-                        break;
-                }
-            }).catch(function (err) {
-                console.error(err);
-            });
-        });
     });
-};
+    const dirProyect = './' + name;
+    const dirTemplate = Path.normalize(`${__dirname}/../templates/${question1}`);
+    const pathsOrigin = searchFiles_1.searchFiles(dirTemplate, { include: '*' });
+    const pathsDestination = pathsOrigin.map(path => Path.normalize(path.replace(dirTemplate, dirProyect)));
+    fs.existsSync(dirProyect) ? launchError_1.LauncError(`El directorio "./${name}" ya existe.`) : null;
+    fs.mkdirSync(dirProyect);
+    console.log(chalk.green(`Directorio ${dirProyect} creado.`));
+    for (const pos in pathsOrigin) {
+        if (Object.prototype.hasOwnProperty.call(pathsOrigin, pos)) {
+            const pathOrigin = pathsOrigin[pos];
+            const pathDestinarion = pathsDestination[pos];
+            const words = pathDestinarion.split('\\');
+            const tempDir = words.join('/');
+            words.pop();
+            const dirDestinarion = words.join('\\');
+            if (!fs.existsSync(dirDestinarion)) {
+                fs.mkdirSync(dirDestinarion, { recursive: true });
+            }
+            fs.copyFileSync(pathOrigin, pathsDestination[pos]);
+            console.log(chalk.green(`Archivo ${tempDir} creado.`));
+        }
+    }
+    console.log(chalk.italic.grey('Instalando dependencias ...'));
+    const exec = require('child_process').exec;
+    yield new Promise((resolve) => {
+        exec('cd ./' + name + ' && npm i && gorila build', resolve);
+    });
+    console.log(chalk.green('Dependencias instaladas!'));
+    const { question } = yield prompt({
+        name: 'question',
+        message: '¿Con que programa quieres abrir el proyecto?',
+        type: 'list',
+        choices: [
+            'Ninguno',
+            'Visual Studio Code',
+            'Explorador De Archivos'
+        ],
+        default: 'Ninguno'
+    });
+    switch (question) {
+        case 'Ninguno':
+            return;
+        case 'Visual Studio Code':
+            exec('cd ./' + name + ' && code .');
+            break;
+        case 'Explorador De Archivos':
+            exec('cd ./' + name + ' && start .');
+            break;
+    }
+});
+exports.CreateProject = CreateProject;
