@@ -1,6 +1,7 @@
 {
   "name": "gorila-http-sockets",
   "version": "0.0.1",
+  "main": "./dist/main.js",
   "scripts": {
     "start": "gorila build && node .",
     "watch": "gorila watch"

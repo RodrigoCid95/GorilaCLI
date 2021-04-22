@@ -1,7 +1,6 @@
 {
   "name": "gorila-sockets",
   "version": "0.0.1",
-  "description": "",
   "main": "./dist/main.js",
   "scripts": {
     "start": "gorila build && node .",
