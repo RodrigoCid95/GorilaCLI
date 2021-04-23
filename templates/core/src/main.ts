@@ -1,15 +1,13 @@
-import { LibraryManager, setModel } from 'gorila-core'
-import config from './config'
-import { Lib } from './libs/lib'
+import { setModel } from 'gorila-core'
+import lm from './libs'
 import { MainModel } from './models'
 
 (async () => {
-  const lm = new LibraryManager(config, [Lib])
   await lm.build();
   class Main {
     @setModel(MainModel, lm) model: MainModel;
     constructor() {
-      console.log(this.model.getMessage())
+      console.log(this.model.libClass, this.model.libFun)
     }
   }
   new Main();

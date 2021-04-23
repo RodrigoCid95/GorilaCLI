@@ -1,7 +1,11 @@
 import { ConfigLoader } from 'gorila-core'
 
 export default new ConfigLoader({
-  Lib: {
-    message: 'Hola Gorila!'
+  LibClass: {
+    message: 'Test LibClass!'
+  },
+  LibFun: {
+    wait: true,
+    message: 'Test LibFunction!'
   }
 })

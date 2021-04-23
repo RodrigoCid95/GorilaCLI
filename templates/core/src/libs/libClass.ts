@@ -1,6 +1,6 @@
 import { Library } from 'gorila-core'
 
-export class Lib extends Library {
+export class LibClass extends Library<{message: string;}> {
   build() {
     return new Promise((resolve => {
       this.log('Preparando librería...!')

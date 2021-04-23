@@ -1,11 +1,16 @@
 {
   "compilerOptions": {
-    "baseUrl": "src",
     "target": "es5",
-    "module": "commonjs",
     "outDir": "dist",
+    "module": "commonjs",
     "sourceMap": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-  }
+  },
+  "include": [
+    "./src/*"
+  ],
+  "exclude": [
+    "node_modules/*"
+  ]
 }
