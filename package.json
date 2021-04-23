@@ -1,5 +1,5 @@
 {
-  "name": "@gorila/cli",
+  "name": "gorila-cli",
   "version": "1.9.5",
   "description": "",
   "main": "bin/script.js",
