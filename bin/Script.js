@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
 const printHelp_1 = require("./PrintHelp");
 const compiler_1 = require("./compiler");
-const project_1 = require("./project");
+const project_1 = require("./Project");
 const searchFiles_1 = require("./compiler/searchFiles");
 const minify_1 = require("./compiler/minify");
 ((args) => tslib_1.__awaiter(void 0, void 0, void 0, function* () {
