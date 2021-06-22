@@ -2,7 +2,7 @@
   "name": "gorila-cli",
   "version": "1.9.5",
   "description": "",
-  "main": "bin/script.js",
+  "main": "./bin/script.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/RodrigoCid95/GorilaFramework.git"
@@ -11,7 +11,7 @@
     "start": "node ./bin/Script.js"
   },
   "bin": {
-    "gorila": "bin/script.js"
+    "gorila": "./bin/script.js"
   },
   "author": "Rodrigo Eduardo Cid Méndez <rodrigocid95@gmail.com>",
   "license": "MIT",
