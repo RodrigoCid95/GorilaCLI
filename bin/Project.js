@@ -5,7 +5,7 @@ const tslib_1 = require("tslib");
 const fs = require("fs");
 const Path = require("path");
 const searchFiles_1 = require("./compiler/searchFiles");
-const launchError_1 = require("./launchError");
+const launchError_1 = require("./LaunchError");
 const chalk = require("chalk");
 const inquirer = require("inquirer");
 const CreateProject = (args) => tslib_1.__awaiter(void 0, void 0, void 0, function* () {
